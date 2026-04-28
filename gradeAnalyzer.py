@@ -93,3 +93,5 @@ def main():
             break
         else:
             print("Invalid Input...!")
+
+main()
