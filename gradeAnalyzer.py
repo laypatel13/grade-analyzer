@@ -65,7 +65,7 @@ def flag_failing(data):
 
 def main():
     file_name = input("Enter your file name: ")
-    headers, data = load_grades(file_name)
+    header, data = load_grades(file_name)
     if data is None:
         return
 
@@ -83,11 +83,11 @@ def main():
             continue
 
         if user_input == 1:
-            analyze_students(data, headers)
+            analyze_students(data)
         elif user_input == 2:
-            analyze_subjects(data, headers)
+            analyze_subjects(data, header)
         elif user_input == 3:
-            flag_failing(data, headers)
+            flag_failing(data)
         elif user_input == 4:
             print("Exited...!")
             break
