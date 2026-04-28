@@ -62,3 +62,34 @@ def flag_failing(data):
     
     if not found:
         print("  No failing students!")
+
+def main():
+    file_name = input("Enter your file name: ")
+    headers, data = load_grades(file_name)
+    if data is None:
+        return
+
+    while True:
+        print("\n----Grade Analyzer----")
+        print("1. Analyze students")
+        print("2. Analyze subjects")
+        print("3. Flag failing students")
+        print("4. Quit")
+
+        try:
+            user_input = int(input("Enter your response: "))
+        except ValueError:
+            print("Please enter a number!")
+            continue
+
+        if user_input == 1:
+            analyze_students(data, headers)
+        elif user_input == 2:
+            analyze_subjects(data, headers)
+        elif user_input == 3:
+            flag_failing(data, headers)
+        elif user_input == 4:
+            print("Exited...!")
+            break
+        else:
+            print("Invalid Input...!")
