@@ -36,3 +36,15 @@ def analyze_students(data):
     for rank, (name, avg) in enumerate(results, start=1):
         print(f"  {rank}. {name} - {avg:.2f}")
 
+def analyze_subjects(data, headers):
+    subjects = headers[1:]   
+
+    for i, subject in enumerate(subjects):
+
+        column = np.array([float(row[i+1]) for row in data])
+            
+        print(f"\n{subject.upper()}")
+        print(f"  Class Average : {np.mean(column):.2f}")
+        print(f"  Highest       : {np.max(column):.2f}")
+        print(f"  Lowest        : {np.min(column):.2f}")
+
