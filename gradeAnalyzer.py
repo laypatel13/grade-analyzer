@@ -36,8 +36,8 @@ def analyze_students(data):
     for rank, (name, avg) in enumerate(results, start=1):
         print(f"  {rank}. {name} - {avg:.2f}")
 
-def analyze_subjects(data, headers):
-    subjects = headers[1:]   
+def analyze_subjects(data, header):
+    subjects = header[1:]   
 
     for i, subject in enumerate(subjects):
 
@@ -48,3 +48,17 @@ def analyze_subjects(data, headers):
         print(f"  Highest       : {np.max(column):.2f}")
         print(f"  Lowest        : {np.min(column):.2f}")
 
+def flag_failing(data):
+    print("\n--- Students Needing Attention ---")
+    found = False
+
+    for row in data:
+        name = row[0]
+        grades = np.array([float(g) for g in row[1:]])
+        
+        if np.any(grades < 40) :
+            print(f"  {name} - failing in one or more subjects")
+            found = True
+    
+    if not found:
+        print("  No failing students!")
